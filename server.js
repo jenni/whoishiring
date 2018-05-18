@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 // const j = schedule.scheduleJob('*/5 * * * *', () => scrape());
 // const j = schedule.scheduleJob('0 11 * * *', () => scrape());
-const j = new CronJob('00 30 10 * * 1-7', () => scrape());
+const j = new CronJob('00 30 10 * * 0-6', () => scrape());
 
 app.use(bodyParser.json());
 
