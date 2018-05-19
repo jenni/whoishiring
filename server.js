@@ -1,16 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
-const CronJob = require('cron').CronJob;
 
 const { mongoose } = require('./db/mongoose');
 const Company = require('./models/company-model');
 
 const app = express();
 const port = process.env.PORT || 4000;
-// const j = schedule.scheduleJob('*/5 * * * *', () => scrape());
-// const j = schedule.scheduleJob('0 11 * * *', () => scrape());
-const j = new CronJob('00 30 10 * * 0-6', () => scrape());
 
 app.use(bodyParser.json());
 
@@ -70,6 +66,8 @@ const scrape = async () => {
     }) : await Company.create(company);
   }
 };
+
+scrape();
 
 app.listen(port, () => {
   console.log(`Server up on port ${port}...`);
