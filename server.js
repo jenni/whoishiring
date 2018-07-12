@@ -12,7 +12,9 @@ app.use(bodyParser.json());
 
 app.get('/', async (req, res) => {
   const companies = await Company.find();
-  res.json(companies);
+  const top10 = companies.splice(0, 10);
+
+  res.json(top10);
 });
 
 const extractValues = () => {
