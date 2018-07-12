@@ -4,15 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
+    "chart.js": "^1.1.1",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "mongoose": "^5.1.0",
-    "puppeteer": "^1.4.0"
-  }
+    "puppeteer": "^1.4.0",
+    "react": "^16.4.1",
+    "react-chartjs": "^1.2.0",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "proxy": "http://localhost:4000"
 }
