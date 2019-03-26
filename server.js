@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
-const path = require('path');
 
 const { mongoose } = require('./db/mongoose');
 const Company = require('./models/company-model');
@@ -11,21 +10,12 @@ const port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 
-app.get('/api', async (req, res) => {
+app.get('/', async (req, res) => {
   const companies = await Company.find();
   const top10 = companies.splice(0, 10);
 
   res.json(top10);
 });
-
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'build')));
-  // Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-}
 
 const extractValues = () => {
   const values = document.querySelectorAll('.companies-container .tag-link');
